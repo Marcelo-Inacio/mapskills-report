@@ -15,24 +15,26 @@ import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentReportListSerializer;
+import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentReportPageSerializer;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentReportListWrapper}
+ * A classe {@link StudentReportPageWrapper} encapsula
+ * uma lista paginada de <code>StudentResult</code>
+ * para serializacao.
  *
  * @author Marcelo Inacio
  * @version 1.0 28/10/2017
  */
 @Getter
-@JsonSerialize(using = StudentReportListSerializer.class)
-public class StudentReportListWrapper {
+@JsonSerialize(using = StudentReportPageSerializer.class)
+public class StudentReportPageWrapper {
 
 	private final Page<StudentResult> studentsReport;
 	
-	public StudentReportListWrapper(final Page<StudentResult> studentsReport) {
+	public StudentReportPageWrapper(final Page<StudentResult> studentsReport) {
 		this.studentsReport = studentsReport;
 	}
 	

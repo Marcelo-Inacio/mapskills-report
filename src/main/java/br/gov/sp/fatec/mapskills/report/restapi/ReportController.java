@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.querydsl.core.types.Predicate;
 
 import br.gov.sp.fatec.mapskills.report.application.ReportApplicationServices;
-import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentReportListWrapper;
+import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentReportPageWrapper;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
 import lombok.AllArgsConstructor;
@@ -58,9 +58,9 @@ public class ReportController {
 	 * visualizacao na interface de relatorio do usuario.
 	 */
 	@GetMapping("/report")
-	public StudentReportListWrapper getReportView(final Pageable pageable, final Predicate reportPredicate) {
+	public StudentReportPageWrapper getReportView(final Pageable pageable, final Predicate reportPredicate) {
 		final Page<StudentResult> students = services.getStudentsReport(pageable, reportPredicate);
-		return new StudentReportListWrapper(students);
+		return new StudentReportPageWrapper(students);
 	}
 	
 	

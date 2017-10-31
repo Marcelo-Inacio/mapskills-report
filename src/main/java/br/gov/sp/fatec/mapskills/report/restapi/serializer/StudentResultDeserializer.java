@@ -21,7 +21,8 @@ import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
 
 /**
- * A classe {@link StudentResultDeserializer}
+ * A classe {@link StudentResultDeserializer} responsavel
+ * por deserializar um objeto <code>StudentResult</code>.
  *
  * @author Marcelo
  * @version 1.0 28/10/2017
@@ -52,7 +53,7 @@ public class StudentResultDeserializer extends JsonDeserializer<StudentResultWra
 		node.forEach(currentNode -> {
 			indicators.add(new StudentResultIndicator(node.get("skillName").asText(),
 					node.get("skillDescription").asText(),
-					node.get("total").asLong()));
+					node.get("total").asInt()));
 		});
 		return indicators;
 	}

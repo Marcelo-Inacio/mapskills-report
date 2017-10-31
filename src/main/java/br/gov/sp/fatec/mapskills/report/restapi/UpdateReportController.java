@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.gov.sp.fatec.mapskills.report.application.ReportApplicationServices;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
 import lombok.AllArgsConstructor;
 
@@ -24,9 +25,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UpdateReportController {
 	
+	private final ReportApplicationServices services;
+	
+	/**
+	 * Endpoint responsavel por cadastrar os resultados de um
+	 * aluno na aplicacao.
+	 * 
+	 * @param wrapper
+	 */
 	@PostMapping("/report")
 	public void updateReport(@RequestBody final StudentResultWrapper wrapper) {
-		
+		services.registerResult(wrapper.getStudentResult());
 	}
-
 }

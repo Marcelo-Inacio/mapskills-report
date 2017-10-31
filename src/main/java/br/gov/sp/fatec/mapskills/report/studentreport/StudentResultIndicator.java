@@ -22,6 +22,5 @@ public class StudentResultIndicator {
 	
 	private final String skillName;
 	private final String skillDescription;
-	private final Long total;
-
+	private final Integer total;
 }

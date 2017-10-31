@@ -14,22 +14,22 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentReportListWrapper;
+import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentReportPageWrapper;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
 import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
 
 /**
- * A classe {@link StudentReportListSerializer} responsavel
+ * A classe {@link StudentReportPageSerializer} responsavel
  * por serializar a estrutura para visualizcao dos resultados
  * dos alunos na interface do usuario.
  *
  * @author Marcelo
  * @version 1.0 28/10/2017
  */
-public class StudentReportListSerializer extends JsonSerializer<StudentReportListWrapper> {
+public class StudentReportPageSerializer extends JsonSerializer<StudentReportPageWrapper> {
 
 	@Override
-	public void serialize(final StudentReportListWrapper wrapper, final JsonGenerator gen,
+	public void serialize(final StudentReportPageWrapper wrapper, final JsonGenerator gen,
 			final SerializerProvider arg2) throws IOException {
 	
 		gen.writeStartObject();
@@ -59,9 +59,9 @@ public class StudentReportListSerializer extends JsonSerializer<StudentReportLis
 		
 		gen.writeArrayFieldStart("data");
 		for(final StudentResult student : studentReport) {
+			gen.writeStartArray();
 			gen.writeString(student.getRa());
 			gen.writeString(student.getName());
-			gen.writeStartArray();
 			for(final StudentResultIndicator score : student.getStudentIndicators()) {
 				gen.writeNumber(score.getTotal());
 			}

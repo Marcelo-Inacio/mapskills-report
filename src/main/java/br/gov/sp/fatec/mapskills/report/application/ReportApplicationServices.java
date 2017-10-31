@@ -110,4 +110,8 @@ public class ReportApplicationServices {
 	public StudentResult getStudentResultById(final Long studentId) {
 		return repository.findById(studentId);
 	}
+	
+	public void registerResult(final StudentResult result) {
+		repository.save(result);
+	}
 }
