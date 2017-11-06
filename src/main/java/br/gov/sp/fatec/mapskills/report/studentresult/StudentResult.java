@@ -1,11 +1,11 @@
 /*
- * @(#)CsvReport.java 1.0 1 21/10/2017
+ * @(#)StudentResult.java 1.0 1 21/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
  */
 
-package br.gov.sp.fatec.mapskills.report.studentreport;
+package br.gov.sp.fatec.mapskills.report.studentresult;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -41,13 +41,14 @@ public class StudentResult {
 	private final String institutionCode;
 	private final String institutionCompany;
 	private final String institutionLevel;
-	private final String yearSemester;
+	private final Integer startYear;
+	private final Integer startSemester;
 	private final List<StudentResultIndicator> studentIndicators = new LinkedList<>();
 	
 	public StudentResult(final Long id, final String ra, final String name,
 			final String courseCode, final String courseName, final String institutionCode,
-			final String institutionCompany, final String institutionLevel,
-			final String yearSemester, final List<StudentResultIndicator> studentIndicators) {
+			final String institutionCompany, final String institutionLevel, final Integer startYear,
+			final Integer startSemester, final List<StudentResultIndicator> studentIndicators) {
 		this.id = id;
 		this.ra = ra;
 		this.name = name;
@@ -56,7 +57,8 @@ public class StudentResult {
 		this.institutionCode = institutionCode;
 		this.institutionCompany = institutionCompany;
 		this.institutionLevel = institutionLevel;
-		this.yearSemester = yearSemester;
+		this.startYear = startYear;
+		this.startSemester = startSemester;
 		this.studentIndicators.addAll(CollectionUtils.isEmpty(studentIndicators) ? Collections.emptyList() : studentIndicators);		
 	}
 	

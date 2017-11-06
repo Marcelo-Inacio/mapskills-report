@@ -12,13 +12,18 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
 import com.querydsl.core.types.Predicate;
 
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultRepository;
+import br.gov.sp.fatec.mapskills.report.indicator.ReportFacade;
+import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourse;
+import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourseSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitution;
+import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevel;
+import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevelSpecification;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
 import lombok.AllArgsConstructor;
 
 /**
@@ -30,9 +35,27 @@ import lombok.AllArgsConstructor;
 @Component
 @AllArgsConstructor
 public class ReportApplicationServices {
+
+	private final ReportFacade facade;
+	private final StudentResultRepository studentResultRepository;
 	
-	private static final String SEMICOLON = ";";
-	private final StudentResultRepository repository;
+	//@PreAuthorize("isFullyAuthenticated()")
+	public List<StudentsIndicatorByInstitutionLevel> getStudentsIndicatorByInstitutionLevel(
+			final StudentsIndicatorByInstitutionLevelSpecification specification) {
+		return facade.getStudentsIndicatorByInstitutionLevel(specification);
+	}
+	
+	//@PreAuthorize("isFullyAuthenticated()")
+	public List<StudentsIndicatorByInstitution> getStudentsIndicatorByInstitution(
+			final StudentsIndicatorByInstitutionSpecification specification) {
+		return facade.getInstitutionStudentIndicators(specification);
+	}
+
+	//@PreAuthorize("isFullyAuthenticated()")
+	public List<StudentsIndicatorByCourse> getStudentsIndicatorByCourse(
+			final StudentsIndicatorByCourseSpecification specification) {
+		return facade.getCourseStudentsIndicators(specification);
+	}
 	
 	/**
 	 * Metodo que escreve todas as informacoes sobre os
@@ -42,76 +65,23 @@ public class ReportApplicationServices {
 	 * @param reportPredicate filtro para pesquisa dos alunos.
 	 * @return Os bytes do <b>StringBuilder</b> gerado para download.
 	 */
+	//@PreAuthorize("isFullyAuthenticated()")
 	public byte[] download(final Predicate reportPredicate) {
-		final List<StudentResult> studentsReport = repository.findAll(reportPredicate);
-		final StringBuilder reportBuilder = new StringBuilder();
-		generateHeader(reportBuilder, studentsReport);
-		studentsReport.stream().forEachOrdered(student -> {
-			final StringBuilder studentRow = generateStudentInformation(student);
-			for(final StudentResultIndicator studentIndicator : student.getStudentIndicators()) {
-				generateResultGame(studentIndicator, studentRow);
-			}
-			reportBuilder.append(studentRow.toString());
-			reportBuilder.append("\n");
-		});
-		return reportBuilder.toString().getBytes();
-	}
-	
-	/**
-	 * Metodo responsavel por escrever todo o cabecalho do relatorio.
-	 * Gerando as competencias dinamicamente.
-	 */
-	private void generateHeader(final StringBuilder stringBuilder, final List<StudentResult> studentsReport) {
-		final StringBuilder defaultHeader = new StringBuilder("RA;ALUNO;CURSO;CODIGO INSTITUICAO;INSTITUICAO;ANO/SEMESTRE;");
-		
-		if(ObjectUtils.isEmpty(studentsReport)) {
-			return;
-		}
-		
-		final List<StudentResultIndicator> indicators = studentsReport.get(0).getStudentIndicators(); 		
-		indicators.stream().forEachOrdered(indicator -> defaultHeader.append(String.format("%s;", indicator.getSkillName().toUpperCase())));
-		stringBuilder.append(defaultHeader).append("\n");
-	}
-	
-	/**
-	 * Metodo responsavel por escrever todas informacoes
-	 * basicas do aluno que aparecera no relatorio.
-	 */
-	private StringBuilder generateStudentInformation(final StudentResult studentReport) {
-		final StringBuilder studentInformation = new StringBuilder();
-		return studentInformation.append(studentReport.getRa()).append(SEMICOLON)
-			.append(studentReport.getName()).append(SEMICOLON)
-			.append(studentReport.getCourseName()).append(SEMICOLON)
-			.append(studentReport.getInstitutionCode()).append(SEMICOLON)
-			.append(studentReport.getInstitutionCompany()).append(SEMICOLON)
-			.append(studentReport.getYearSemester()).append(SEMICOLON);
-	}
-	
-	/**
-	 * Metodo responsavel por escrever todos os resultados das competencias
-	 * de um aluno gerada pela aplicacao.
-	 */
-	private void generateResultGame(final StudentResultIndicator studentIndicator, final StringBuilder reportBuilder) {
-		reportBuilder.append(ObjectUtils.isEmpty(studentIndicator.getTotal()) ? "N/A" : studentIndicator.getTotal()).append(SEMICOLON);
+		return facade.download(reportPredicate);
 	}
 
-	/**
-	 * @param reportPredicate
-	 * @return
-	 */
+	//@PreAuthorize("isFullyAuthenticated()")
 	public Page<StudentResult> getStudentsReport(final Pageable pageable, final Predicate reportPredicate) {
-		return repository.findAll(reportPredicate, pageable);
+		return studentResultRepository.findAll(reportPredicate, pageable);
 	}
 
-	/**
-	 * @param studentId
-	 * @return
-	 */
+	//@PreAuthorize("isFullyAuthenticated()")
 	public StudentResult getStudentResultById(final Long studentId) {
-		return repository.findById(studentId);
+		return studentResultRepository.findById(studentId);
 	}
 	
+	//@PreAuthorize("isFullyAuthenticated()")
 	public void registerResult(final StudentResult result) {
-		repository.save(result);
+		studentResultRepository.save(result);
 	}
 }

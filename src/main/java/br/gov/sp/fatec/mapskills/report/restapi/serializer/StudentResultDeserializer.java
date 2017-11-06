@@ -1,5 +1,5 @@
 /*
- * @(#)StudentReportDeserializer.java 1.0 1 28/10/2017
+ * @(#)StudentResultDeserializer.java 1.0 1 28/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -17,8 +17,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 
 /**
  * A classe {@link StudentResultDeserializer} responsavel
@@ -44,16 +44,17 @@ public class StudentResultDeserializer extends JsonDeserializer<StudentResultWra
 						node.get("institutionCode").asText(),
 						node.get("institutionCompany").asText(),
 						node.get("institutionLevel").asText(),
-						node.get("yearSemester").asText(),
+						node.get("startYear").asInt(),
+						node.get("startSemester").asInt(),
 						deserializeIndicators(node.get("studentIndicators"))));
 	}
 	
 	private List<StudentResultIndicator> deserializeIndicators(final JsonNode node) {
 		final List<StudentResultIndicator> indicators = new LinkedList<>();
 		node.forEach(currentNode -> {
-			indicators.add(new StudentResultIndicator(node.get("skillName").asText(),
-					node.get("skillDescription").asText(),
-					node.get("total").asInt()));
+			indicators.add(new StudentResultIndicator(currentNode.get("skillName").asText(),
+					currentNode.get("skillDescription").asText(),
+					currentNode.get("total").asInt()));
 		});
 		return indicators;
 	}

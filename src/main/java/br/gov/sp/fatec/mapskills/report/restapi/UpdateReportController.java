@@ -33,8 +33,8 @@ public class UpdateReportController {
 	 * 
 	 * @param wrapper
 	 */
-	@PostMapping("/report")
-	public void updateReport(@RequestBody final StudentResultWrapper wrapper) {
+	@PostMapping("/result")
+	public void registerResult(@RequestBody final StudentResultWrapper wrapper) {
 		services.registerResult(wrapper.getStudentResult());
 	}
 }

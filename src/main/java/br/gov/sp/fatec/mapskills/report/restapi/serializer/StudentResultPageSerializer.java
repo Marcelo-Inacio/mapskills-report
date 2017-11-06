@@ -1,5 +1,5 @@
 /*
- * @(#)StudentReportListSerializer.java 1.0 1 28/10/2017
+ * @(#)StudentResultPageSerializer.java.java 1.0 1 28/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -14,22 +14,22 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentReportPageWrapper;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultPageWrapper;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 
 /**
- * A classe {@link StudentReportPageSerializer} responsavel
+ * A classe {@link StudentResultPageSerializer} responsavel
  * por serializar a estrutura para visualizcao dos resultados
  * dos alunos na interface do usuario.
  *
  * @author Marcelo
  * @version 1.0 28/10/2017
  */
-public class StudentReportPageSerializer extends JsonSerializer<StudentReportPageWrapper> {
+public class StudentResultPageSerializer extends JsonSerializer<StudentResultPageWrapper> {
 
 	@Override
-	public void serialize(final StudentReportPageWrapper wrapper, final JsonGenerator gen,
+	public void serialize(final StudentResultPageWrapper wrapper, final JsonGenerator gen,
 			final SerializerProvider arg2) throws IOException {
 	
 		gen.writeStartObject();

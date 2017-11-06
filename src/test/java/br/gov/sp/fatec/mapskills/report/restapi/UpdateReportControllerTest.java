@@ -7,14 +7,18 @@
 
 package br.gov.sp.fatec.mapskills.report.restapi;
 
-import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 import br.gov.sp.fatec.mapskills.report.ReportApplication;
 
@@ -31,9 +35,13 @@ import br.gov.sp.fatec.mapskills.report.ReportApplication;
 @ActiveProfiles("test")
 public class UpdateReportControllerTest extends AbstractControllerTets {
 	
+	@Autowired
+    private MockMvc mvc;
+	
 	@Test
-	public void test() {
-		assertTrue(true);
+	public void registerResultTest() throws Exception {
+		final String json = getJsonAsString("student-result.json");
+		this.mvc.perform(post("/result").content(json).contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(status().isOk()).andReturn();
 	}
-
 }

@@ -20,8 +20,8 @@ import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 import net.minidev.json.JSONValue;
 
 /**
@@ -55,7 +55,7 @@ public abstract class AbstractControllerTets {
 			final String ra = String.format("%s%s17200%d", institutionCode, courseCode, i);
 			final StudentResult studentResult = new StudentResult(new Long(i), ra,
 					"AlunoTest"+i, courseCode, "Banco De Dados", institutionCode, "Fatec Profº Jessen Vidal",
-					"SUPERIOR", "2017/2", getResultIndicator());
+					"SUPERIOR", 2017, 2, getResultIndicator());
 			results.add(studentResult);
 		}
 		mongoTemplate.insertAll(results);

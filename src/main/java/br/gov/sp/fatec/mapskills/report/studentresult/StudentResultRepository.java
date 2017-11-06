@@ -5,7 +5,7 @@
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
  */
 
-package br.gov.sp.fatec.mapskills.report.studentreport;
+package br.gov.sp.fatec.mapskills.report.studentresult;
 
 import java.util.List;
 

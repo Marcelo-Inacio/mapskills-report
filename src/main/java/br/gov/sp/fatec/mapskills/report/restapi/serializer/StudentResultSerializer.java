@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 
 /**
  * A classe {@link StudentResultSerializer} e responsavel

@@ -1,5 +1,5 @@
 /*
- * @(#)StudentReportWrapper.java 1.0 1 28/10/2017
+ * @(#)StudentResultWrapper.java 1.0 1 28/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -14,8 +14,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultDeserializer;
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultSerializer;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

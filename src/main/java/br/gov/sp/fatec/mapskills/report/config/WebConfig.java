@@ -16,7 +16,10 @@ import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import br.gov.sp.fatec.mapskills.report.restapi.ReportPredicateArgumentResolver;
+import br.gov.sp.fatec.mapskills.report.restapi.StudentResultPredicateArgumentResolver;
+import br.gov.sp.fatec.mapskills.report.restapi.StudentsIndicatorByCourseSpecificationArgumentResolver;
+import br.gov.sp.fatec.mapskills.report.restapi.StudentsIndicatorByInstitutionSpecificationArgumentResolver;
+import br.gov.sp.fatec.mapskills.report.restapi.StudentsIndicatorByInstitutionLevelSpecificationArgumentResolver;
 
 /**
  * A classe {@link WebConfig}
@@ -35,15 +38,32 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 	
 	@Bean
-	public ReportPredicateArgumentResolver predicateResolver() {
-		return new ReportPredicateArgumentResolver();
+	public StudentResultPredicateArgumentResolver studentResultPredicateResolver() {
+		return new StudentResultPredicateArgumentResolver();
+	}
+	
+	@Bean
+	public StudentsIndicatorByCourseSpecificationArgumentResolver byCourseArgumentResolver() {
+		return new StudentsIndicatorByCourseSpecificationArgumentResolver();
+	}
+	
+	@Bean
+	public StudentsIndicatorByInstitutionLevelSpecificationArgumentResolver byInstitutionLevelArgumentResolver() {
+		return new StudentsIndicatorByInstitutionLevelSpecificationArgumentResolver();
+	}
+	
+	@Bean
+	public StudentsIndicatorByInstitutionSpecificationArgumentResolver byInstitutionArgumentResolver() {
+		return new StudentsIndicatorByInstitutionSpecificationArgumentResolver();
 	}
 	
 	@Override
     public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
     	argumentResolvers.add(pageableResolver());
-    	argumentResolvers.add(predicateResolver());
+    	argumentResolvers.add(studentResultPredicateResolver());
+    	argumentResolvers.add(byCourseArgumentResolver());
+    	argumentResolvers.add(byInstitutionArgumentResolver());
+    	argumentResolvers.add(byInstitutionLevelArgumentResolver());
     	super.addArgumentResolvers(argumentResolvers);
     }
-
 }

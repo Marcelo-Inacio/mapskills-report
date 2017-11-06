@@ -7,6 +7,9 @@
 
 package br.gov.sp.fatec.mapskills.report.config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -16,7 +19,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultRepository;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
 
 /**
  * A classe {@link MongoConfig} representa a configuracao do mongodb da aplicacao.
@@ -25,8 +28,8 @@ import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultRepository;
  * @version 1.0 19/09/2017
  */
 @Configuration
-@EnableMongoRepositories(basePackageClasses = StudentResultRepository.class)
 @Profile("prd")
+@EnableMongoRepositories(basePackageClasses = StudentResultRepository.class)
 public class MongoConfig extends AbstractMongoConfiguration{
 	
 	@Value("${spring.data.mongodb.host}")
@@ -49,7 +52,7 @@ public class MongoConfig extends AbstractMongoConfiguration{
     }
   
     @Override
-    protected String getMappingBasePackage() {
-        return "br.gov.sp.fatec.mapskills.report";
+    protected List<String> getMappingBasePackages() {
+        return Arrays.asList("br.gov.sp.fatec.mapskills.report.studentresult");
     }
 }

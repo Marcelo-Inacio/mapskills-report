@@ -43,7 +43,7 @@ public class ReportControllerTest extends AbstractControllerTets {
 	@Test
 	public void reportStudentResultTest() throws Exception {
 		insertStudentResults(10, "146", "028");
-		final MvcResult result = this.mvc.perform(get("/report"))
+		final MvcResult result = this.mvc.perform(get("/report/student"))
 				.andExpect(status().isOk()).andReturn();
 		
 		final String content = result.getResponse().getContentAsString();
@@ -55,12 +55,14 @@ public class ReportControllerTest extends AbstractControllerTets {
 	public void reportStudentResultWithParamTest() throws Exception {
 		insertStudentResults(10, "146", "028");
 		insertStudentResults(3, "146", "112");
-		final MvcResult result = this.mvc.perform(get("/report")
+		final MvcResult result = this.mvc.perform(get("/report/student")
 				.param("institutionLevel", "SUPERIOR")
 				.param("institutionCode", "146")
 				.param("courseCode", "112")
-				.param("startDate", "2017/2")
-				.param("endDate", "2017/2")				)
+				.param("startYear", "2017")
+				.param("startSemester", "2")
+				.param("endYear", "2017")
+				.param("endSemester", "2"))
 				.andExpect(status().isOk()).andReturn();
 		
 		final String content = result.getResponse().getContentAsString();

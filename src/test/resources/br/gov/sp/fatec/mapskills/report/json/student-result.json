@@ -1,0 +1,38 @@
+{
+  "id": 1,
+  "ra": "1460681720030",
+  "name": "Aluno Teste da Silva",
+  "courseCode": "068",
+  "courseName": "Tecnologia em Manutenção de Aeronaves",
+  "institutionCode": "146",
+  "institutionCompany": "Prof° Jessen Vidal",
+  "institutionLevel": "SUPERIOR",
+  "yearSemester": "2017/2",
+  "studentIndicators": [
+    {
+      "skillName": "Liderança",
+      "skillDescription": "Descrição da Liderança",
+      "total": 5
+    },
+    {
+      "skillName": "Gestão de Tempo",
+      "skillDescription": "Descrição da Gestão de Tempo",
+      "total": 12
+    },
+    {
+      "skillName": "Visão de Futuro",
+      "skillDescription": "Descrição da Visão de Futuro",
+      "total": 8
+    },
+    {
+      "skillName": "Comunicação",
+      "skillDescription": "Descrição da Comunicação",
+      "total": 10
+    },
+    {
+      "skillName": "Resiliência",
+      "skillDescription": "Descrição da Resiliência",
+      "total": 16
+    }
+  ]
+}

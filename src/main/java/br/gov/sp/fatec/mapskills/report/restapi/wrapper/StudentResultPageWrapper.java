@@ -1,5 +1,5 @@
 /*
- * @(#)StudentReportListWrapper.java 1.0 1 28/10/2017
+ * @(#)StudentResultPageWrapper.java 1.0 1 28/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -15,13 +15,13 @@ import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentReportPageSerializer;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentreport.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultPageSerializer;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentReportPageWrapper} encapsula
+ * A classe {@link StudentResultPageWrapper} encapsula
  * uma lista paginada de <code>StudentResult</code>
  * para serializacao.
  *
@@ -29,12 +29,12 @@ import lombok.Getter;
  * @version 1.0 28/10/2017
  */
 @Getter
-@JsonSerialize(using = StudentReportPageSerializer.class)
-public class StudentReportPageWrapper {
+@JsonSerialize(using = StudentResultPageSerializer.class)
+public class StudentResultPageWrapper {
 
 	private final Page<StudentResult> studentsReport;
 	
-	public StudentReportPageWrapper(final Page<StudentResult> studentsReport) {
+	public StudentResultPageWrapper(final Page<StudentResult> studentsReport) {
 		this.studentsReport = studentsReport;
 	}
 	
