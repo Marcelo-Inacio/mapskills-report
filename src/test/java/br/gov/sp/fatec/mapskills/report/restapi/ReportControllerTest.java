@@ -73,7 +73,7 @@ public class ReportControllerTest extends AbstractControllerTets {
 	@Test
 	public void downloadTest() throws Exception {
 		insertStudentResults(10, "146", "028");
-		final int expectedLength = 1002;
+		final int expectedLength = 986;
 		final MvcResult result = this.mvc.perform(get("/report/download"))
 				.andExpect(status().isOk()).andReturn();
 		

@@ -7,7 +7,8 @@
   "institutionCode": "146",
   "institutionCompany": "Prof° Jessen Vidal",
   "institutionLevel": "SUPERIOR",
-  "yearSemester": "2017/2",
+  "startYear": 2017,
+  "startSemester": 2,
   "studentIndicators": [
     {
       "skillName": "Liderança",
