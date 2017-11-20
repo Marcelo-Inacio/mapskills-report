@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import br.gov.sp.fatec.mapskills.report.indicator.StudentsIndicatorSpecification;
 
 /**
@@ -23,10 +24,10 @@ import br.gov.sp.fatec.mapskills.report.indicator.StudentsIndicatorSpecification
 public class StudentsIndicatorByInstitutionSpecification
 				extends StudentsIndicatorSpecification<StudentsIndicatorByInstitution> {
 
-	private final Integer institutionLevel;
+	private final InstitutionLevel institutionLevel;
 
 	public StudentsIndicatorByInstitutionSpecification(final Integer startYear, final Integer startSemester,
-			final Integer endYear, final Integer endSemester, final Integer institutionLevel) {
+			final Integer endYear, final Integer endSemester, final InstitutionLevel institutionLevel) {
 		super(startYear, startSemester, endYear, endSemester);
 		this.institutionLevel = institutionLevel;
 	}

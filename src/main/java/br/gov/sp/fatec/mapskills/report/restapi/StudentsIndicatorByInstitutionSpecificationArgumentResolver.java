@@ -13,6 +13,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionSpecification;
 
 /**
@@ -37,8 +38,8 @@ public class StudentsIndicatorByInstitutionSpecificationArgumentResolver impleme
 				getSemester("endSemester", webRequest), getInstitutionLevel(webRequest));
 	}
 	
-	private Integer getInstitutionLevel(final NativeWebRequest webRequest) {
+	private InstitutionLevel getInstitutionLevel(final NativeWebRequest webRequest) {
 		final String institutionLevelParam = webRequest.getParameter("institutionLevel");
-		return StringUtils.isEmpty(institutionLevelParam) ? null : Integer.valueOf(institutionLevelParam);
+		return StringUtils.isEmpty(institutionLevelParam) ? null : InstitutionLevel.withLevel(institutionLevelParam);
 	}
 }

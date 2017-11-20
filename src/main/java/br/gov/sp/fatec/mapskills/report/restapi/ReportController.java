@@ -104,7 +104,6 @@ public class ReportController {
 	 * 
 	 * Expoe endpoint para
 	 */
-	//TODO MUDAR CHAMADA DA URI NO FRONT
 	@GetMapping("/report/institution")
 	public StudentsIndicatorByInstitutionWrapper getInstitutionIndicator(
 			final StudentsIndicatorByInstitutionSpecification specification) {

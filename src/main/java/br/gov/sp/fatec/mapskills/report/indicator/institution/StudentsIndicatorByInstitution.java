@@ -9,11 +9,13 @@ package br.gov.sp.fatec.mapskills.report.indicator.institution;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Immutable;
 
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import lombok.Getter;
 
 /**
@@ -42,8 +44,9 @@ public class StudentsIndicatorByInstitution {
 	@Column(name = "CODE")
 	private final String institutionCode;
 	
+	@Enumerated
 	@Column(name = "LEVEL")
-	private final Integer level;
+	private final InstitutionLevel level;
 	
 	@Column(name = "COMPANY")
 	private final String institutionName;
