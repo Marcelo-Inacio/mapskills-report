@@ -41,7 +41,7 @@ public class UpdateReportControllerTest extends AbstractControllerTets {
 	@Test
 	public void registerResultTest() throws Exception {
 		final String json = getJsonAsString("student-result.json");
-		this.mvc.perform(post("/result").content(json).contentType(MediaType.APPLICATION_JSON_UTF8))
+		this.mvc.perform(post("/report").content(json).contentType(MediaType.APPLICATION_JSON_UTF8))
 				.andExpect(status().isOk()).andReturn();
 	}
 }
