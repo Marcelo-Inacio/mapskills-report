@@ -33,6 +33,7 @@ public class StudentsIndicatorByCourseSpecification extends StudentsIndicatorSpe
 	@Override
 	public Predicate toPredicate(final Root<StudentsIndicatorByCourse> root,
 			final CriteriaQuery<?> query, final CriteriaBuilder builder) {
+		query.orderBy(builder.asc(root.get("startYear")), builder.asc(root.get("startSemester")), builder.asc(root.get("courseCode")));
 		final Predicate yearSemesterP = getYearSemesterPredicate(root, builder);
 		final Predicate institutionCodeP = equal(root, builder, "institutionCode", institutionCode);
 		return and(builder, yearSemesterP, institutionCodeP);

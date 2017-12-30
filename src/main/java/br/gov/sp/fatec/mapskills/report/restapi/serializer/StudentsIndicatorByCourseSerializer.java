@@ -31,7 +31,8 @@ public class StudentsIndicatorByCourseSerializer extends JsonSerializer<Students
 		gen.writeStartArray();
 		for(final StudentsIndicatorByCourse indicator : wrapper.getIndicators()) {
 			gen.writeStartObject();
-			gen.writeStringField("course", indicator.getCourseName());			
+			gen.writeStringField("code", indicator.getCourseCode());
+			gen.writeStringField("name", indicator.getCourseName());		
 			gen.writeArrayFieldStart("values");
 			gen.writeNumber(indicator.getNotFinalized());
 			gen.writeNumber(indicator.getFinalized());
