@@ -20,7 +20,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentResultWrapper}
+ * A classe {@link StudentResultWrapper} contem o resultado
+ * dos indicadores de um aluno.
  *
  * @author Marcelo
  * @version 1.0 28/10/2017

@@ -84,4 +84,17 @@ public class ReportApplicationServices {
 	public void registerResult(final StudentResult result) {
 		studentResultRepository.save(result);
 	}
+
+	/**
+	 * Responsavel por realizar a reindexacao de todo conteudo
+	 * armazenado no banco de dados mongo.
+	 * 
+	 * @param results
+	 * 		lista dos resultados a ser inseridos.
+	 */
+	//@PreAuthorize("isFullyAuthenticated()")
+	public void reindexDatabase(final List<StudentResult> results) {
+		studentResultRepository.deleteAll();
+		studentResultRepository.save(results);
+	}
 }

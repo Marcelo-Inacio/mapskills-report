@@ -11,7 +11,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentResultIndicator}
+ * A classe {@link StudentResultIndicator} representa
+ * um dado indicador de uma competencia com seu respectivo
+ * valor.
  *
  * @author Marcelo
  * @version 1.0 21/10/2017

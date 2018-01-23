@@ -20,7 +20,8 @@ import com.querydsl.core.annotations.QueryEntity;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentResult}
+ * A classe {@link StudentResult} representa os dados de
+ * um aluno com seus indicadores de cada competencia finais.
  *
  * @author Marcelo
  * @version 1.0 21/10/2017

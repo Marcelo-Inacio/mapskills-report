@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.mapskills.report.application.ReportApplicationServices;
+import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultListWrapper;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
 import lombok.AllArgsConstructor;
 
 /**
- * A classe {@link UpdateReportController}
+ * A classe {@link UpdateReportController} contem metodos
+ * para operacoes de insercao de registros, relacionados aos
+ * resultados de alunos.
  *
  * @author Marcelo
  * @version 1.0 21/10/2017
@@ -32,9 +35,22 @@ public class UpdateReportController {
 	 * aluno na aplicacao.
 	 * 
 	 * @param wrapper
+	 * 		resultado do aluno encapsulado.
 	 */
 	@PostMapping("/report")
 	public void registerResult(@RequestBody final StudentResultWrapper wrapper) {
 		services.registerResult(wrapper.getStudentResult());
+	}
+	
+	/**
+	 * Endpoint responsavel por realizar a reindexacao da base de dados
+	 * com resgistros de resultados dos alunos.
+	 * 
+	 * @param wrapper
+	 * 		lista encapsulada dos resultados a ser inseridos.
+	 */
+	@PostMapping("/reindex")
+	public void reindexDatabase(@RequestBody final StudentResultListWrapper wrapper) {
+		services.reindexDatabase(wrapper.getResults());
 	}
 }
