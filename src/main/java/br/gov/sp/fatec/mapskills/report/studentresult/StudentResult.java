@@ -17,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.querydsl.core.annotations.QueryEntity;
 
+import br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultData;
 import lombok.Getter;
 
 /**
@@ -46,6 +47,11 @@ public class StudentResult {
 	private final Integer startSemester;
 	private final List<StudentResultIndicator> studentIndicators = new LinkedList<>();
 	
+	@SuppressWarnings("unused")
+	private StudentResult() {
+		this(null, null, null, null, null, null, null, null, null, null, Collections.emptyList());
+	}
+	
 	public StudentResult(final Long id, final String ra, final String name,
 			final String courseCode, final String courseName, final String institutionCode,
 			final String institutionCompany, final String institutionLevel, final Integer startYear,
@@ -61,6 +67,13 @@ public class StudentResult {
 		this.startYear = startYear;
 		this.startSemester = startSemester;
 		this.studentIndicators.addAll(CollectionUtils.isEmpty(studentIndicators) ? Collections.emptyList() : studentIndicators);		
+	}
+	
+	public StudentResult(final StudentResultData data) {
+		this(data.getStudentId(), data.getStudentRA(), data.getStudentName(),
+				data.getCourseCode(), data.getCourseName(), data.getInstitutionCode(),
+				data.getInstitutionCompany(), data.getInstitutionLevel().name(), data.getStartYear(),
+				data.getStartSemester(), data.getStudentResultIndicator());
 	}
 	
 	public List<StudentResultIndicator> getStudentIndicators() {

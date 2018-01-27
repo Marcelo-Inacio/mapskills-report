@@ -24,6 +24,7 @@ import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndic
 import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevelSpecification;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
+import br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultDataRetriever;
 import lombok.AllArgsConstructor;
 
 /**
@@ -38,6 +39,7 @@ public class ReportApplicationServices {
 
 	private final ReportFacade facade;
 	private final StudentResultRepository studentResultRepository;
+	private final StudentResultDataRetriever studentResultDataRetriever;
 	
 	//@PreAuthorize("isFullyAuthenticated()")
 	public List<StudentsIndicatorByInstitutionLevel> getStudentsIndicatorByInstitutionLevel(
@@ -93,7 +95,8 @@ public class ReportApplicationServices {
 	 * 		lista dos resultados a ser inseridos.
 	 */
 	//@PreAuthorize("isFullyAuthenticated()")
-	public void reindexDatabase(final List<StudentResult> results) {
+	public void reindexDatabase() {
+		final List<StudentResult> results = studentResultDataRetriever.retrieve();
 		studentResultRepository.deleteAll();
 		studentResultRepository.save(results);
 	}

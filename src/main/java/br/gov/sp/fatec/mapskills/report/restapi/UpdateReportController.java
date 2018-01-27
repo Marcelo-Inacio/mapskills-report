@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.mapskills.report.application.ReportApplicationServices;
-import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultListWrapper;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
 import lombok.AllArgsConstructor;
 
@@ -50,7 +49,7 @@ public class UpdateReportController {
 	 * 		lista encapsulada dos resultados a ser inseridos.
 	 */
 	@PostMapping("/reindex")
-	public void reindexDatabase(@RequestBody final StudentResultListWrapper wrapper) {
-		services.reindexDatabase(wrapper.getResults());
+	public void reindexDatabase() {
+		services.reindexDatabase();
 	}
 }

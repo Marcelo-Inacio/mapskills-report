@@ -33,8 +33,8 @@ import org.springframework.transaction.jta.JtaTransactionManager;
  */
 @Configuration
 @EnableTransactionManagement
-@EntityScan(basePackages = {"br.gov.sp.fatec.mapskills.report.indicator.*"})
-@EnableJpaRepositories(basePackages = "br.gov.sp.fatec.mapskills.report.indicator.*")
+@EntityScan(basePackages = {"br.gov.sp.fatec.mapskills.report.*"})
+@EnableJpaRepositories(basePackages = "br.gov.sp.fatec.mapskills.report.*")
 public class MySqlConfig extends JpaBaseConfiguration {
 
 	protected MySqlConfig(final DataSource dataSource, final JpaProperties properties,

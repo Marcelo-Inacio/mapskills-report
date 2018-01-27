@@ -7,6 +7,7 @@
 
 package br.gov.sp.fatec.mapskills.report.studentresult;
 
+import br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultIndicatorData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -25,4 +26,13 @@ public class StudentResultIndicator {
 	private final String skillName;
 	private final String skillDescription;
 	private final Integer total;
+	
+	@SuppressWarnings("unused")
+	private StudentResultIndicator() {
+		this(null, null, null);
+	}
+	
+	public StudentResultIndicator(final StudentResultIndicatorData data) {
+		this(data.getSkillName(), data.getSkillDescription(), data.getTotal());
+	}
 }
