@@ -1,4 +1,4 @@
-FROM java:openjdk-8u91-jdk
-MAINTAINER marcelomcl_10@hotmail.com
-EXPOSE 8082
-CMD java -jar report-0.0.1-SNAPSHOT.jar && /bin/bash
+FROM openjdk:8-jdk-alpine
+RUN apk update && apk add --no-cache bash
+ADD target/report-1.0.0.jar app.jar
+ENTRYPOINT [ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
