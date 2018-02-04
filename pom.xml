@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<name>Mapskills - Report</name>
 	<groupId>br.gov.sp.fatec.mapskills</groupId>
-	<artifactId>report</artifactId>
+	<artifactId>mapskills-report</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<description>Serviço de relatórios para a aplicação Mapskills</description>
@@ -14,7 +14,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.8.RELEASE</version>
 	</parent>
-	
+
 	<developers>
 		<developer>
 			<name>Marcelo Inacio</name>
@@ -37,13 +37,15 @@
 		<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
 		<datasource.username>mapskills</datasource.username>
 		<datasource.password>mapskills</datasource.password>
-		
+
 		<mongodb.port>27017</mongodb.port>
 		<mongodb.database>mapskills</mongodb.database>
 		<mongodb.username>mapskills</mongodb.username>
 		<mongodb.password>mapskills</mongodb.password>
 
 		<mysema.maven.version>1.1.3</mysema.maven.version>
+		
+		<docker.image.prefix>mapskills</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -169,6 +171,7 @@
 	</profiles>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -189,6 +192,18 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.3.6</version>
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<imageName>${project.artifactId}</imageName>
+					<imageTags>
+						<imageTag>${project.version}</imageTag>
+					</imageTags>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
