@@ -48,7 +48,7 @@ public class UpdateReportController {
 	 * @param wrapper
 	 * 		lista encapsulada dos resultados a ser inseridos.
 	 */
-	@PostMapping("/reindex")
+	@PostMapping("/report/reindex")
 	public void reindexDatabase() {
 		services.reindexDatabase();
 	}
