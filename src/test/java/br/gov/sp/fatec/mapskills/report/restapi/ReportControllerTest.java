@@ -8,6 +8,7 @@
 package br.gov.sp.fatec.mapskills.report.restapi;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -71,13 +72,90 @@ public class ReportControllerTest extends AbstractControllerTets {
 	}
 	
 	@Test
+	public void getStudentResultTest() throws Exception {
+		insertStudentResults(3, "146", "112");
+		final MvcResult result = this.mvc.perform(get("/report/student/1"))
+				.andExpect(status().isOk()).andReturn();
+		
+		final String content = result.getResponse().getContentAsString();
+		final String expected = getJsonAsString("expectations/student-radar-result.json");
+		JSONAssert.assertEquals(expected, content, true);
+	}
+	
+	@Test
+	public void getInstitutionLevelIndicator() throws Exception {
+		runSQLCommands("/br/gov/sp/fatec/mapskills/report/database/controller/insert-students.sql");
+		final MvcResult result = this.mvc.perform(get("/report/institution-level")
+				.param("startYear", "2018")
+				.param("startSemester", "1")
+				.param("endYear", "2018")
+				.param("endSemester", "2"))
+				.andExpect(status().isOk()).andReturn();
+		
+		final String content = result.getResponse().getContentAsString();
+		final String expected = getJsonAsString("expectations/indicator-grouped-by-all-levels-institution.json");
+		JSONAssert.assertEquals(expected, content, true);
+	}
+	
+	@Test
+	public void getInstitutionSuperiorIndicator() throws Exception {
+		runSQLCommands("/br/gov/sp/fatec/mapskills/report/database/controller/insert-students.sql");
+		final MvcResult result = this.mvc.perform(get("/report/institution")
+				.param("startYear", "2018")
+				.param("startSemester", "1")
+				.param("endYear", "2018")
+				.param("endSemester", "2")
+				.param("institutionLevel", "SUPERIOR"))
+				.andExpect(status().isOk()).andReturn();
+		
+		final String content = result.getResponse().getContentAsString();
+		final String expected = getJsonAsString("expectations/indicator-grouped-by-superior-level-institution.json");
+		JSONAssert.assertEquals(expected, content, true);
+	}
+	
+	@Test
+	public void getInstitutionTechnicalIndicator() throws Exception {
+		runSQLCommands("/br/gov/sp/fatec/mapskills/report/database/controller/insert-students.sql");
+		final MvcResult result = this.mvc.perform(get("/report/institution")
+				.param("startYear", "2018")
+				.param("startSemester", "1")
+				.param("endYear", "2018")
+				.param("endSemester", "2")
+				.param("institutionLevel", "TECHNICAL"))
+				.andExpect(status().isOk()).andReturn();
+		
+		final String content = result.getResponse().getContentAsString();
+		final String expected = getJsonAsString("expectations/indicator-grouped-by-technical-level-institution.json");
+		JSONAssert.assertEquals(expected, content, true);
+	}
+	
+	@Test
+	public void getInstitutionCoursesIndicator() throws Exception {
+		runSQLCommands("/br/gov/sp/fatec/mapskills/report/database/controller/insert-students.sql");
+		final MvcResult result = this.mvc.perform(get("/report/institution-courses")
+				.param("startYear", "2018")
+				.param("startSemester", "1")
+				.param("endYear", "2018")
+				.param("endSemester", "2")
+				.param("institutionCode", "146"))
+				.andExpect(status().isOk()).andReturn();
+		
+		final String content = result.getResponse().getContentAsString();
+		final String expected = getJsonAsString("expectations/indicator-grouped-by-institution.json");
+		JSONAssert.assertEquals(expected, content, true);
+	}
+	
+	@Test
 	public void downloadTest() throws Exception {
 		insertStudentResults(10, "146", "028");
-		final int expectedLength = 986;
 		final MvcResult result = this.mvc.perform(get("/report/download"))
 				.andExpect(status().isOk()).andReturn();
 		
-		final int content = result.getResponse().getContentLength();
-		assertEquals(expectedLength, content);
+		final int length = result.getResponse().getContentAsByteArray().length;
+		final String contentType = result.getResponse().getContentType();
+		final String header = result.getResponse().getHeader("Content-Disposition");
+		assertTrue(length > 0);
+		assertEquals("application/octet-stream", contentType);
+		assertEquals("attachment; filename=report.csv", header);
 	}
 }

@@ -1,0 +1,38 @@
+{
+  "labels": [
+    "Liderança",
+    "Gestão de Tempo",
+    "Visão de Futuro",
+    "Comunicação",
+    "Resiliência"
+  ],
+  "datasets": [
+    7,
+    7,
+    7,
+    7,
+    7
+  ],
+  "skills": [
+    {
+      "name": "Liderança",
+      "description": "Descrição da Habilidade de Liderança."
+    },
+    {
+      "name": "Gestão de Tempo",
+      "description": "Descrição da Habilidade de Gestão de Tempo."
+    },
+    {
+      "name": "Visão de Futuro",
+      "description": "Descrição da Habilidade de Visão de Futuro."
+    },
+    {
+      "name": "Comunicação",
+      "description": "Descrição da Habilidade de Comunicação."
+    },
+    {
+      "name": "Resiliência",
+      "description": "Descrição da Habilidade de Resiliência."
+    }
+  ]
+}

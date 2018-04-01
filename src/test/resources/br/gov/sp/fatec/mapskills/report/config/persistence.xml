@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+	<persistence-unit name="REPORTPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
+		<class>br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourse</class>
+		<class>br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitution</class>
+		<class>br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevel</class>
+		
+		<class>br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultData</class>
+		<class>br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultIndicatorData</class>          
+        
+		<properties>
+			<property name="eclipselink.cache-usage" value="CheckCacheThenDatabase" />
+			<property name="eclipselink.orm.throw.exceptions" value="true" />
+			<property name="eclipselink.query-results-cache" value="false" />
+			<property name="eclipselink.weaving" value="false"/>
+			<property name="eclipselink.cache.shared.default" value="false"/>
+		</properties>
+	</persistence-unit>
+</persistence>

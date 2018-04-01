@@ -7,6 +7,7 @@ C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\ReportApplication.java
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\restapi\StudentsIndicatorHandlerMethodArgumentResolver.java
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\restapi\wrapper\StudentsIndicatorByCourseWrapper.java
+C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\config\CorsConfig.java
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\indicator\course\StudentsIndicatorByCourse.java
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\indicator\institutionlevel\StudentsIndicatorByInstitutionLevelSpecification.java
 C:\Users\Marcelo\Documents\GitHub\mapskills-report\src\main\java\br\gov\sp\fatec\mapskills\report\restapi\wrapper\StudentsIndicatorByInstitutionWrapper.java

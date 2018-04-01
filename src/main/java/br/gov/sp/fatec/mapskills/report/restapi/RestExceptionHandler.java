@@ -30,18 +30,18 @@ public class RestExceptionHandler {
 	
 	private final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
 	
-	@ExceptionHandler(value = { ReportException.class })
-    protected ResponseEntity<ErrorResponse> handle(final RuntimeException ex) {
-		final ResponseStatus status = ex.getClass().getAnnotation(ResponseStatus.class);
-        final ErrorResponse responseBody = new ErrorResponse(status.value(), ex.getMessage());
-        logger.error("Aconteceu um problema de dominio", ex);
-		return new ResponseEntity<>(responseBody, status.value());
+	@ExceptionHandler(ReportException.class)
+    protected ResponseEntity<ErrorResponse> handle(final ReportException exception) {
+		final ResponseStatus status = exception.getClass().getAnnotation(ResponseStatus.class);
+        final ErrorResponse body = new ErrorResponse(status.value(), exception.getMessage());
+        logger.error("Aconteceu um problema de dominio", exception);
+		return new ResponseEntity<>(body, status.value());
     }
 	
-	@ExceptionHandler(value = { Exception.class })
-    protected ResponseEntity<ErrorResponse> handle(final Exception ex) {
-        final ErrorResponse responseBody = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
-        logger.error("Aconteceu um problema que não de dominio", ex);
-		return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
+	@ExceptionHandler(Throwable.class)
+    protected ResponseEntity<ErrorResponse> handle(final Throwable cause) {
+        final ErrorResponse body = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, cause.getMessage());
+        logger.error("Aconteceu um problema que não de dominio", cause);
+		return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

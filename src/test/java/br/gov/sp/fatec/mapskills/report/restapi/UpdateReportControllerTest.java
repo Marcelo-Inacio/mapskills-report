@@ -7,8 +7,12 @@
 
 package br.gov.sp.fatec.mapskills.report.restapi;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +25,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import br.gov.sp.fatec.mapskills.report.ReportApplication;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
 
 /**
  * A classe {@link UpdateReportControllerTest} contem
@@ -38,10 +44,29 @@ public class UpdateReportControllerTest extends AbstractControllerTets {
 	@Autowired
     private MockMvc mvc;
 	
+	@Autowired
+	private StudentResultRepository studentResultRepository;
+	
 	@Test
 	public void registerResultTest() throws Exception {
 		final String json = getJsonAsString("student-result.json");
 		this.mvc.perform(post("/report").content(json).contentType(MediaType.APPLICATION_JSON_UTF8))
-				.andExpect(status().isOk()).andReturn();
+			.andExpect(status().isOk());
+		
+		final StudentResult student = studentResultRepository.findById(1L);
+		assertEquals(new Long(1), student.getId());
+		assertEquals("1460681720030", student.getRa());
+		assertEquals("Aluno Teste da Silva", student.getName());
+		assertTrue(student.getStudentIndicators().size() == 5);
+	}
+	
+	@Test
+	public void reindexMongoDatabase() throws Exception {
+		runSQLCommands("/br/gov/sp/fatec/mapskills/report/database/controller/insert-students.sql");
+		this.mvc.perform(post("/report/reindex").contentType(MediaType.APPLICATION_JSON_UTF8))
+			.andExpect(status().isOk());
+		
+		final List<StudentResult> students = studentResultRepository.findAll();
+		assertTrue(students.size() == 4);
 	}
 }

@@ -88,8 +88,8 @@ public class ReportApplicationServices {
 	}
 
 	/**
-	 * Responsavel por realizar a reindexacao de todo conteudo
-	 * armazenado no banco de dados mongo.
+	 * Responsavel por realizar a reindexacao do conteudo armazenado
+	 * no banco de dados mongo a partir do banco relacional mysql.
 	 * 
 	 * @param results
 	 * 		lista dos resultados a ser inseridos.

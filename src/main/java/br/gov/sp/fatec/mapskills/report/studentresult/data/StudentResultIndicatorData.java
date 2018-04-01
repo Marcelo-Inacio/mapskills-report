@@ -28,7 +28,7 @@ public class StudentResultIndicatorData {
 	
 	@Id
 	@Column(name = "ID")
-	private final Long id;
+	private final String id;
 	
 	@Column(name = "ID_STUDENT")
 	private final Long studentId;

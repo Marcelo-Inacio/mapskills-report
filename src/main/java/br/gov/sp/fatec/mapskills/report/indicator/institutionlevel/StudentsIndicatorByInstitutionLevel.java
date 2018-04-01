@@ -32,7 +32,7 @@ public class StudentsIndicatorByInstitutionLevel {
 	
 	@Id
 	@Column(name = "ID")
-	private final Long id;
+	private final String id;
 	
 	@Column(name = "START_YEAR")
 	private final Integer startYear;

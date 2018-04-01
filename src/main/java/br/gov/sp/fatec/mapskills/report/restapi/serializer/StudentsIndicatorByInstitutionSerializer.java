@@ -74,8 +74,8 @@ public class StudentsIndicatorByInstitutionSerializer extends JsonSerializer<Stu
 	 * Metodo que calcula uma porcentagem a partir de uma quantidade e um total.
 	 */
 	private BigDecimal calcPercentage(final double quantity, final double total) {
-		final double percentage = (quantity/total) * 100;
-		final BigDecimal accuratePercentage = new BigDecimal(percentage);
+		final double percentage = (quantity / total) * 100;
+		final BigDecimal accuratePercentage = BigDecimal.valueOf(percentage);
 		return accuratePercentage.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 	}
 }

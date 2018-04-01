@@ -51,11 +51,10 @@ public class StudentResultDeserializer extends JsonDeserializer<StudentResultWra
 	
 	private List<StudentResultIndicator> deserializeIndicators(final JsonNode node) {
 		final List<StudentResultIndicator> indicators = new LinkedList<>();
-		node.forEach(currentNode -> {
-			indicators.add(new StudentResultIndicator(currentNode.get("skillName").asText(),
+		node.forEach(currentNode -> indicators.add(new StudentResultIndicator(currentNode.get("skillName").asText(),
 					currentNode.get("skillDescription").asText(),
-					currentNode.get("total").asInt()));
-		});
+					currentNode.get("total").asInt())));
+		
 		return indicators;
 	}
 }

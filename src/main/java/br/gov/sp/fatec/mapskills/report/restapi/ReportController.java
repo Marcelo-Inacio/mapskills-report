@@ -88,9 +88,9 @@ public class ReportController {
 	}
 	
 	/**
-	 * 
 	 * Expoe endpoint para recuperar os indicadores da quantidade de alunos que
 	 * finalizaram e nao finalizaram por grau de instituicao.
+	 * 
 	 * Ex.: Superior (Fatec) e Tecnico (Etec)
 	 */
 	@GetMapping("/report/institution-level")

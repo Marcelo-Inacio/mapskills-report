@@ -24,7 +24,6 @@ import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
 import lombok.Getter;
 
 /**
- * 
  * A classe {@link StudentResultData} representa a sumarizacao
  * dos resultados apurados das competencias avaliadas pelo
  * aluno.
