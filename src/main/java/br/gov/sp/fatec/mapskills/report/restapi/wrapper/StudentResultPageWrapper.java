@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultPageSerializer;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import lombok.Getter;
 
 /**
@@ -58,7 +58,7 @@ public class StudentResultPageWrapper {
 		return studentsReport.getNumber();
 	}
 	
-	public List<StudentResultIndicator> getFirstStudentIndicators() {
+	public List<SkillResultIndicator> getFirstStudentIndicators() {
 		final List<StudentResult> list = getContent();
 		return CollectionUtils.isEmpty(list) ? Collections.emptyList() : list.get(0).getStudentIndicators();
 	}

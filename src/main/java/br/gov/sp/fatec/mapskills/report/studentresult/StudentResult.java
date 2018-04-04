@@ -21,8 +21,8 @@ import br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultData;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentResult} representa os dados de
- * um aluno com seus indicadores de cada competencia finais.
+ * A classe {@link StudentResult} representa um documento mongodb
+ * com os dados de um aluno com seus resultados de cada competencia.
  *
  * @author Marcelo
  * @version 1.0 21/10/2017
@@ -45,7 +45,7 @@ public class StudentResult {
 	private final String institutionLevel;
 	private final Integer startYear;
 	private final Integer startSemester;
-	private final List<StudentResultIndicator> studentIndicators = new LinkedList<>();
+	private final List<SkillResultIndicator> skillResultIndicators = new LinkedList<>();
 	
 	@SuppressWarnings("unused")
 	private StudentResult() {
@@ -55,7 +55,7 @@ public class StudentResult {
 	public StudentResult(final Long id, final String ra, final String name,
 			final String courseCode, final String courseName, final String institutionCode,
 			final String institutionCompany, final String institutionLevel, final Integer startYear,
-			final Integer startSemester, final List<StudentResultIndicator> studentIndicators) {
+			final Integer startSemester, final List<SkillResultIndicator> skillResultIndicators) {
 		this.id = id;
 		this.ra = ra;
 		this.name = name;
@@ -66,17 +66,17 @@ public class StudentResult {
 		this.institutionLevel = institutionLevel;
 		this.startYear = startYear;
 		this.startSemester = startSemester;
-		this.studentIndicators.addAll(CollectionUtils.isEmpty(studentIndicators) ? Collections.emptyList() : studentIndicators);		
+		this.skillResultIndicators.addAll(CollectionUtils.isEmpty(skillResultIndicators) ? Collections.emptyList() : skillResultIndicators);		
 	}
 	
 	public StudentResult(final StudentResultData data) {
-		this(data.getStudentId(), data.getStudentRA(), data.getStudentName(),
+		this(data.getStudentId(), data.getStudentRa(), data.getStudentName(),
 				data.getCourseCode(), data.getCourseName(), data.getInstitutionCode(),
 				data.getInstitutionCompany(), data.getInstitutionLevel().name(), data.getStartYear(),
-				data.getStartSemester(), data.getStudentResultIndicator());
+				data.getStartSemester(), data.getSkillResultIndicators());
 	}
 	
-	public List<StudentResultIndicator> getStudentIndicators() {
-		return Collections.unmodifiableList(studentIndicators);
+	public List<SkillResultIndicator> getStudentIndicators() {
+		return Collections.unmodifiableList(skillResultIndicators);
 	}
 }

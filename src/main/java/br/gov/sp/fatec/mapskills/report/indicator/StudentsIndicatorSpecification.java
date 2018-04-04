@@ -20,7 +20,8 @@ import org.springframework.util.ObjectUtils;
 import lombok.AllArgsConstructor;
 
 /**
- * A classe {@link StudentsIndicatorSpecification}
+ * A classe {@link StudentsIndicatorSpecification} contem os atributos e metodos
+ * em comum aos {@link Specification} de indicador de alunos.
  *
  * @author Marcelo
  * @version 1.0 05/11/2017
@@ -41,7 +42,7 @@ public abstract class StudentsIndicatorSpecification<T> implements Specification
 		return builder.and(startYearP, startSemeP, endYearP, endSemeP);
 	}
 	
-	protected Predicate equal(final Root<T> root, final CriteriaBuilder builder,
+	protected Predicate equalPredicate(final Root<T> root, final CriteriaBuilder builder,
 			final String rootParam, final Object filterParam) {
 		if (ObjectUtils.isEmpty(filterParam)) {
 			return null;

@@ -63,11 +63,13 @@
 		<sonar.exclusions>
 			src/main/java/br/gov/sp/fatec/mapskills/report/ReportApplication.java,
 			src/main/java/br/gov/sp/fatec/mapskills/report/config/**/*,
+			src/main/java/br/gov/sp/fatec/mapskills/report/studentresult/data/SkillResultIndicatorData.java,
 			src/test/*
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
 			src/main/java/br/gov/sp/fatec/mapskills/report/ReportApplication.java,
-			src/main/java/br/gov/sp/fatec/mapskills/report/config/**/*
+			src/main/java/br/gov/sp/fatec/mapskills/report/config/**/*,
+			src/main/java/br/gov/sp/fatec/mapskills/report/studentresult/data/SkillResultIndicatorData.java,
 		</sonar.coverage.exclusions>
 
 		<maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>

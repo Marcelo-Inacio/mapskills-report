@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import lombok.AllArgsConstructor;
 
 /**
@@ -35,7 +35,7 @@ public class ReportGenerator {
 		generateHeader(reportBuilder, studentsReport);
 		studentsReport.stream().forEachOrdered(student -> {
 			final StringBuilder studentRow = generateStudentInformation(student);
-			for(final StudentResultIndicator studentIndicator : student.getStudentIndicators()) {
+			for(final SkillResultIndicator studentIndicator : student.getStudentIndicators()) {
 				generateResultGame(studentIndicator, studentRow);
 			}
 			reportBuilder.append(studentRow.toString());
@@ -55,7 +55,7 @@ public class ReportGenerator {
 			return;
 		}
 		
-		final List<StudentResultIndicator> indicators = studentsReport.get(0).getStudentIndicators(); 		
+		final List<SkillResultIndicator> indicators = studentsReport.get(0).getStudentIndicators(); 		
 		indicators.stream().forEachOrdered(indicator -> defaultHeader.append(String.format("%s;", indicator.getSkillName().toUpperCase())));
 		stringBuilder.append(defaultHeader).append("\n");
 	}
@@ -79,7 +79,7 @@ public class ReportGenerator {
 	 * Metodo responsavel por escrever todos os resultados das competencias
 	 * de um aluno gerada pela aplicacao.
 	 */
-	private void generateResultGame(final StudentResultIndicator studentIndicator, final StringBuilder reportBuilder) {
+	private void generateResultGame(final SkillResultIndicator studentIndicator, final StringBuilder reportBuilder) {
 		reportBuilder.append(ObjectUtils.isEmpty(studentIndicator.getTotal()) ? "N/A" : studentIndicator.getTotal()).append(SEMICOLON);
 	}
 }

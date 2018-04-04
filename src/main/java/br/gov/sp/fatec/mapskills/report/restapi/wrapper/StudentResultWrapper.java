@@ -15,13 +15,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultDeserializer;
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultSerializer;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * A classe {@link StudentResultWrapper} contem o resultado
- * dos indicadores de um aluno.
+ * dos indicadores de um aluno encapsulados para serializacao/deserializacao.
  *
  * @author Marcelo
  * @version 1.0 28/10/2017
@@ -34,7 +34,7 @@ public class StudentResultWrapper {
 	
 	private final StudentResult studentResult;
 	
-	public List<StudentResultIndicator> getStudentResultIndicators() {
+	public List<SkillResultIndicator> getStudentResultIndicators() {
 		return studentResult.getStudentIndicators();
 	}
 }

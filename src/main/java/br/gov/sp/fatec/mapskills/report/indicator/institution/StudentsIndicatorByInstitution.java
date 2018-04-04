@@ -1,5 +1,5 @@
 /*
- * @(#)InstitutionStudentsIndicator.java 1.0 1 17/09/2017
+ * @(#)StudentsIndicatorByInstitution.java 1.0 1 17/09/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -13,21 +13,21 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Immutable;
-
 import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import lombok.Getter;
 
 /**
  * A classe {@link StudentsIndicatorByInstitution} representa
  * indicador do progresso dos alunos por instituicao de ensino.
+ * 
+ * Na pratica contem a quantidade de alunos que finalizaram e
+ * nao finalizaram o jogo por uma determinada instituticao.
  *
  * @author Marcelo
  * @version 1.0 17/09/2017
  */
 @Getter
 @Entity
-@Immutable
 @Table(name = "MAPSKILLS.ADMIN_LEVEL_STUDENTS_PROGRESS_VIEW")
 public class StudentsIndicatorByInstitution {
 	
@@ -42,7 +42,7 @@ public class StudentsIndicatorByInstitution {
 	private final Integer startSemester;
 	
 	@Column(name = "CODE")
-	private final String institutionCode;
+	private final String code;
 	
 	@Enumerated
 	@Column(name = "LEVEL")
@@ -52,10 +52,10 @@ public class StudentsIndicatorByInstitution {
 	private final String institutionName;
 	
 	@Column(name = "NOT_FINALIZED")
-	private final Double notFinalized;
+	private final Integer notFinalized;
 	
 	@Column(name = "FINALIZED")
-	private final Double finalized;
+	private final Integer finalized;
 	
 	@Column(name = "TOTAL")
 	private final Integer total;	
@@ -64,7 +64,7 @@ public class StudentsIndicatorByInstitution {
 		this.id = null;
 		this.startYear = null;
 		this.startSemester = null;
-		this.institutionCode = null;
+		this.code = null;
 		this.level = null;
 		this.institutionName = null;
 		this.notFinalized = null;

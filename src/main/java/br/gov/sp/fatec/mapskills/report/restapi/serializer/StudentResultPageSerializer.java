@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultPageWrapper;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 
 /**
  * A classe {@link StudentResultPageSerializer} responsavel
@@ -42,13 +42,13 @@ public class StudentResultPageSerializer extends JsonSerializer<StudentResultPag
 		gen.writeEndObject();
 	}
 	
-	private void serializeHeader(final List<StudentResultIndicator> studentIndicators,
+	private void serializeHeader(final List<SkillResultIndicator> studentIndicators,
 			final JsonGenerator gen) throws IOException {
 		
 		gen.writeArrayFieldStart("head");
 		gen.writeString("RA");
 		gen.writeString("NOME");
-		for(final StudentResultIndicator indicator : studentIndicators) {
+		for(final SkillResultIndicator indicator : studentIndicators) {
 			gen.writeString(indicator.getSkillName());
 		}
 		gen.writeEndArray();
@@ -62,7 +62,7 @@ public class StudentResultPageSerializer extends JsonSerializer<StudentResultPag
 			gen.writeStartArray();
 			gen.writeString(student.getRa());
 			gen.writeString(student.getName());
-			for(final StudentResultIndicator score : student.getStudentIndicators()) {
+			for(final SkillResultIndicator score : student.getStudentIndicators()) {
 				gen.writeNumber(score.getTotal());
 			}
 			gen.writeEndArray();

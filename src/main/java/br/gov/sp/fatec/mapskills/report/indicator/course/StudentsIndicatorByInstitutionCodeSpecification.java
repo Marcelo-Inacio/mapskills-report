@@ -1,5 +1,5 @@
 /*
- * @(#)StudentsIndicatorByCourseSpecification.java 1.0 1 05/11/2017
+ * @(#)StudentsIndicatorByInstitutionSpecification.java 1.0 1 05/11/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -15,16 +15,20 @@ import javax.persistence.criteria.Root;
 import br.gov.sp.fatec.mapskills.report.indicator.StudentsIndicatorSpecification;
 
 /**
- * A classe {@link StudentsIndicatorByCourseSpecification}
+ * A classe {@link StudentsIndicatorByInstitutionCodeSpecification} sera
+ * executada em {@link StudentsIndicatorByInstitutionCodeRepository} para trazer
+ * a quantidade de alunos que finalizaram e nao finalizaram o jogo dos cursos
+ * de uma determinada instituicao.
  *
  * @author Marcelo
  * @version 1.0 05/11/2017
  */
-public class StudentsIndicatorByCourseSpecification extends StudentsIndicatorSpecification<StudentsIndicatorByCourse> {
+public class StudentsIndicatorByInstitutionCodeSpecification
+		extends StudentsIndicatorSpecification<StudentsIndicatorByCourse> {
 
 	private final Integer institutionCode;
 	
-	public StudentsIndicatorByCourseSpecification(final Integer startYear, final Integer startSemester,
+	public StudentsIndicatorByInstitutionCodeSpecification(final Integer startYear, final Integer startSemester,
 			final Integer endYear, final Integer endSemester, final Integer institutionCode) {
 		super(startYear, startSemester, endYear, endSemester);
 		this.institutionCode = institutionCode;
@@ -35,7 +39,7 @@ public class StudentsIndicatorByCourseSpecification extends StudentsIndicatorSpe
 			final CriteriaQuery<?> query, final CriteriaBuilder builder) {
 		query.orderBy(builder.asc(root.get("startYear")), builder.asc(root.get("startSemester")), builder.asc(root.get("courseCode")));
 		final Predicate yearSemesterP = getYearSemesterPredicate(root, builder);
-		final Predicate institutionCodeP = equal(root, builder, "institutionCode", institutionCode);
+		final Predicate institutionCodeP = equalPredicate(root, builder, "institutionCode", institutionCode);
 		return and(builder, yearSemesterP, institutionCodeP);
 	}
 }

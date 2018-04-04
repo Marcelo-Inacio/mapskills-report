@@ -1,5 +1,5 @@
 /*
- * @(#)StudentsIndicatorByInstitutionLevelSpecification.java 1.0 1 05/11/2017
+ * @(#)StudentsIndicatorByAllInstitutionLevelSpecification.java 1.0 1 05/11/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -15,15 +15,15 @@ import javax.persistence.criteria.Root;
 import br.gov.sp.fatec.mapskills.report.indicator.StudentsIndicatorSpecification;
 
 /**
- * A classe {@link StudentsIndicatorByInstitutionLevelSpecification}
+ * A classe {@link StudentsIndicatorByAllInstitutionLevelSpecification}
  *
  * @author Marcelo
  * @version 1.0 05/11/2017
  */
-public class StudentsIndicatorByInstitutionLevelSpecification
+public class StudentsIndicatorByAllInstitutionLevelSpecification
 		extends StudentsIndicatorSpecification<StudentsIndicatorByInstitutionLevel> {
 
-	public StudentsIndicatorByInstitutionLevelSpecification(
+	public StudentsIndicatorByAllInstitutionLevelSpecification(
 			final Integer startYear, final Integer startSemester,
 			final Integer endYear, final Integer endSemester) {
 		super(startYear, startSemester, endYear, endSemester);

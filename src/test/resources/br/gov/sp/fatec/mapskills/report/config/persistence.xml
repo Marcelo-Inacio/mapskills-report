@@ -13,7 +13,7 @@
 		<class>br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevel</class>
 		
 		<class>br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultData</class>
-		<class>br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultIndicatorData</class>          
+		<class>br.gov.sp.fatec.mapskills.report.studentresult.data.SkillResultIndicatorData</class>          
         
 		<properties>
 			<property name="eclipselink.cache-usage" value="CheckCacheThenDatabase" />

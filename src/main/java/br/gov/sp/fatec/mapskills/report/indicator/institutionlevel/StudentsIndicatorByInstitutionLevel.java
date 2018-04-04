@@ -9,17 +9,22 @@ package br.gov.sp.fatec.mapskills.report.indicator.institutionlevel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Immutable;
 
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import lombok.Getter;
 
 /**
  * A classe {@link StudentsIndicatorByInstitutionLevel} representa
- * indicador sobre o progresso dos alunos pelo grau
- * da instituicao.
+ * indicador sobre o progresso dos alunos pelo grau da instituicao.
+ * Ex.: Tecnico ou Superior.
+ * 
+ * Na pratica contem valores sobre a quantidade de alunos de finalizaram
+ * e nao finalizaram o jogo de maneira geral.
  *
  * @author Marcelo
  * @version 1.0 17/09/2017
@@ -40,8 +45,9 @@ public class StudentsIndicatorByInstitutionLevel {
 	@Column(name = "START_SEMESTER")
 	private final Integer startSemester;
 	
+	@Enumerated
 	@Column(name = "LEVEL")
-	private final Integer level;
+	private final InstitutionLevel level;
 	
 	@Column(name = "NOT_FINALIZED")
 	private final Integer notFinalized;
@@ -63,11 +69,11 @@ public class StudentsIndicatorByInstitutionLevel {
 	}
 
 	public boolean isInstitutionLevelSuperior() {
-		return level.equals(1);
+		return level.isSuperior();
 	}
 
 	/**
-	 * @return A o ano com o semestre formatado. 
+	 * @return O ano com o semestre formatado. 
 	 */
 	public String getYearSemester() {
 		return String.format("%d/%d", startYear, startSemester);

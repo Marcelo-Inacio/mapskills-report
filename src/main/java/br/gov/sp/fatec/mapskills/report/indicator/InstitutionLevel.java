@@ -16,7 +16,18 @@ package br.gov.sp.fatec.mapskills.report.indicator;
  */
 public enum InstitutionLevel {
 	
-	TECHNICAL, SUPERIOR;
+	/**
+	 * Representa as Etecs.
+	 */
+	TECHNICAL,
+	/**
+	 * Representa as Fatecs.
+	 */
+	SUPERIOR;
+	
+	public boolean isSuperior() {
+		return this.equals(SUPERIOR);
+	}
 	
 	public static InstitutionLevel withLevel(final String level) {
 		return level != null && level.equalsIgnoreCase("SUPERIOR") ? SUPERIOR : TECHNICAL;

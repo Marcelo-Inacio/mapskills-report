@@ -21,7 +21,8 @@ import com.querydsl.core.types.Predicate;
  * @author Marcelo
  * @version 1.0 27/10/2017
  */
-public interface StudentResultRepository extends MongoRepository<StudentResult, String>, QueryDslPredicateExecutor<StudentResult> {
+public interface StudentResultRepository extends MongoRepository<StudentResult, String>,
+		QueryDslPredicateExecutor<StudentResult> {
 	
 	List<StudentResult> findAll(final Predicate predicate);
 	StudentResult findById(final Long studentId);

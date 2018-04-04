@@ -5,7 +5,7 @@
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
  */
 
-package br.gov.sp.fatec.mapskills.report.restapi;
+package br.gov.sp.fatec.mapskills.report.restapi.resolver;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.util.StringUtils;
@@ -14,7 +14,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
-import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionLevelSpecification;
 
 /**
  * A classe {@link StudentsIndicatorByInstitutionSpecificationArgumentResolver}
@@ -26,14 +26,14 @@ public class StudentsIndicatorByInstitutionSpecificationArgumentResolver impleme
 
 	@Override
 	public boolean supportsParameter(final MethodParameter parameter) {
-		return parameter.getParameterType().equals(StudentsIndicatorByInstitutionSpecification.class);
+		return parameter.getParameterType().equals(StudentsIndicatorByInstitutionLevelSpecification.class);
 	}
 
 	@Override
 	public Object resolveArgument(final MethodParameter parameter, final ModelAndViewContainer mavContainer,
 			final NativeWebRequest webRequest, final WebDataBinderFactory binderFactory) throws Exception {
 		
-		return new StudentsIndicatorByInstitutionSpecification(getYear("startYear", webRequest),
+		return new StudentsIndicatorByInstitutionLevelSpecification(getYear("startYear", webRequest),
 				getSemester("startSemester", webRequest), getYear("endYear", webRequest),
 				getSemester("endSemester", webRequest), getInstitutionLevel(webRequest));
 	}

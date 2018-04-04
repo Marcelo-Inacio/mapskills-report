@@ -1,5 +1,5 @@
 /*
- * @(#)CourseStudentIndicator.java 1.0 1 17/09/2017
+ * @(#)StudentsIndicatorByCourse.java 1.0 1 17/09/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -9,23 +9,26 @@ package br.gov.sp.fatec.mapskills.report.indicator.course;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Immutable;
-
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
 import lombok.Getter;
 
 /**
  * A classe {@link StudentsIndicatorByCourse} representa
- * os indicadores dos alunos por curso.
+ * os indicadores dos alunos por curso de uma instituicao.
+ * 
+ * Na pratica contem a quantidade de alunos que finalizaram e
+ * nao finalizaram o jogo de um determinado curso de uma determinada
+ * instituicao.
  *
  * @author Marcelo
  * @version 1.0 17/09/2017
  */
 @Getter
 @Entity
-@Immutable
 @Table(name = "MAPSKILLS.INSTITUTION_STUDENTS_PROGRESS_VIEW")
 public class StudentsIndicatorByCourse {
 	
@@ -42,8 +45,9 @@ public class StudentsIndicatorByCourse {
 	@Column(name = "INSTITUTION_CODE")
 	private final String institutionCode;
 	
+	@Enumerated
 	@Column(name = "INSTITUTION_LEVEL")
-	private final String institutionLevel;
+	private final InstitutionLevel institutionLevel;
 	
 	@Column(name = "COURSE_CODE")
 	private final String courseCode;

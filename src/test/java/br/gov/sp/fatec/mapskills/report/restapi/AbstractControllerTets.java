@@ -36,7 +36,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.xml.sax.InputSource;
 
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import net.minidev.json.JSONValue;
 
 /**
@@ -178,7 +178,7 @@ public abstract class AbstractControllerTets {
 		mongoTemplate.insertAll(results);
 	}
 	
-	private List<StudentResultIndicator> getResultIndicator() {
+	private List<SkillResultIndicator> getResultIndicator() {
 		final Map<String, String> skills = new HashMap<>(5);
 		skills.put("Liderança", "Descrição da Habilidade de Liderança.");
 		skills.put("Gestão de Tempo", "Descrição da Habilidade de Gestão de Tempo.");
@@ -186,9 +186,9 @@ public abstract class AbstractControllerTets {
 		skills.put("Visão de Futuro", "Descrição da Habilidade de Visão de Futuro.");
 		skills.put("Comunicação", "Descrição da Habilidade de Comunicação.");
 		
-		final List<StudentResultIndicator> indicators = new LinkedList<>();
+		final List<SkillResultIndicator> indicators = new LinkedList<>();
 		skills.forEach((name, description) -> {
-			indicators.add(new StudentResultIndicator(name, description, 7));
+			indicators.add(new SkillResultIndicator(name, description, 7));
 		});
 		return indicators;
 	}

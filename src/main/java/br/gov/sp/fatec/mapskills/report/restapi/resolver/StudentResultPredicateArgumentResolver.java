@@ -5,7 +5,7 @@
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
  */
 
-package br.gov.sp.fatec.mapskills.report.restapi;
+package br.gov.sp.fatec.mapskills.report.restapi.resolver;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class StudentResultPredicateArgumentResolver implements HandlerMethodArgu
 		endYearSemesterRange(query, webRequest, predicates);
 		
 		BooleanExpression result = predicates.isEmpty() ? null : predicates.get(0);
-		for (int i = 1; i < predicates.size(); i++) {
+		for (int i = 1; i < predicates.size() && result != null; i++) {
             result = result.and(predicates.get(i));
         }		
 		return new StudentResultPredicate(result);

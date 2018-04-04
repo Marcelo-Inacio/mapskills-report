@@ -15,7 +15,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
+import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
 
 /**
  * A classe {@link StudentResultSerializer} e responsavel
@@ -33,19 +34,28 @@ public class StudentResultSerializer extends JsonSerializer<StudentResultWrapper
 			final SerializerProvider serializers) throws IOException {
 
 		gen.writeStartObject();
+		this.serializeStudentData(wrapper, gen);
 		this.serializeLabels(wrapper, gen);
 		this.serializeResultValues(wrapper, gen);
 		this.serializeSkills(wrapper, gen);
 		gen.writeEndObject();
 	}
 	
+	private void serializeStudentData(final StudentResultWrapper wrapper, final JsonGenerator gen) throws IOException {
+		final StudentResult student = wrapper.getStudentResult();
+		gen.writeStringField("name", student.getName());
+		gen.writeStringField("ra", student.getRa());
+		gen.writeStringField("institution", student.getInstitutionCompany());
+		gen.writeStringField("course", student.getCourseName());
+	}
+	
 	/**
 	 * Responsavel por serializar os label's do grafico de radar.
 	 */
 	private void serializeLabels(final StudentResultWrapper wrapper, final JsonGenerator generator) throws IOException {
-		final List<StudentResultIndicator> indicators = wrapper.getStudentResultIndicators();
+		final List<SkillResultIndicator> indicators = wrapper.getStudentResultIndicators();
 		generator.writeArrayFieldStart("labels");
-		for(final StudentResultIndicator indicator : indicators) {
+		for(final SkillResultIndicator indicator : indicators) {
 			generator.writeString(indicator.getSkillName());
 		}
 		generator.writeEndArray();
@@ -55,9 +65,9 @@ public class StudentResultSerializer extends JsonSerializer<StudentResultWrapper
 	 * Responsavel por serializar os valores do grafico de radar.
 	 */
 	private void serializeResultValues(final StudentResultWrapper wrapper, final JsonGenerator generator) throws IOException {
-		final List<StudentResultIndicator> indicators = wrapper.getStudentResultIndicators();
+		final List<SkillResultIndicator> indicators = wrapper.getStudentResultIndicators();
 		generator.writeArrayFieldStart("datasets");
-		for(final StudentResultIndicator indicator : indicators) {
+		for(final SkillResultIndicator indicator : indicators) {
 			generator.writeNumber(indicator.getTotal());
 		}
 		generator.writeEndArray();
@@ -67,9 +77,9 @@ public class StudentResultSerializer extends JsonSerializer<StudentResultWrapper
 	 * Responsavel por serializar as competencias avaliadas pelo aluno.
 	 */
 	private void serializeSkills(final StudentResultWrapper wrapper, final JsonGenerator generator) throws IOException {
-		final List<StudentResultIndicator> indicators = wrapper.getStudentResultIndicators();
+		final List<SkillResultIndicator> indicators = wrapper.getStudentResultIndicators();
 		generator.writeArrayFieldStart("skills");
-		for(final StudentResultIndicator indicator : indicators) {
+		for(final SkillResultIndicator indicator : indicators) {
 			generator.writeStartObject();
 			generator.writeStringField("name", indicator.getSkillName());
 			generator.writeStringField("description", indicator.getSkillDescription());

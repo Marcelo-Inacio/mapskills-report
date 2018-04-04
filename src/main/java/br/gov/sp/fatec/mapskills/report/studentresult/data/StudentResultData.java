@@ -20,7 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultIndicator;
+import br.gov.sp.fatec.mapskills.report.indicator.InstitutionLevel;
+import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import lombok.Getter;
 
 /**
@@ -41,7 +42,7 @@ public class StudentResultData {
 	private final Long studentId;
 	
 	@Column(name = "STUDENT_RA")
-	private final String studentRA;
+	private final String studentRa;
 	
 	@Column(name = "STUDENT_NAME")
 	private final String studentName;
@@ -71,11 +72,11 @@ public class StudentResultData {
 	@OneToMany
 	@JoinColumn(name = "ID_STUDENT")
 	@OrderBy("skillName")
-	private final List<StudentResultIndicatorData> studentIndicators = new LinkedList<>();
+	private final List<SkillResultIndicatorData> skillResultIndicators = new LinkedList<>();
 	
 	private StudentResultData() {
 		this.studentId = null;
-		this.studentRA = null;
+		this.studentRa = null;
 		this.studentName = null;
 		this.courseName = null;
 		this.institutionCode = null;
@@ -86,8 +87,8 @@ public class StudentResultData {
 		this.courseCode = null;
 	}
 	
-	public List<StudentResultIndicator> getStudentResultIndicator() {
-		return studentIndicators.parallelStream()
-					.map(StudentResultIndicator::new).collect(Collectors.toList());
+	public List<SkillResultIndicator> getSkillResultIndicators() {
+		return skillResultIndicators.parallelStream()
+					.map(SkillResultIndicator::new).collect(Collectors.toList());
 	}
 }

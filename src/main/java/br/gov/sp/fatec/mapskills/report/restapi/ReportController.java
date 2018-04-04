@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.mapskills.report.application.ReportApplicationServices;
 import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourse;
-import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourseSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByInstitutionCodeSpecification;
 import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitution;
-import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionLevelSpecification;
 import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevel;
-import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevelSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByAllInstitutionLevelSpecification;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultPageWrapper;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentResultWrapper;
 import br.gov.sp.fatec.mapskills.report.restapi.wrapper.StudentsIndicatorByCourseWrapper;
@@ -95,7 +95,7 @@ public class ReportController {
 	 */
 	@GetMapping("/report/institution-level")
 	public StudentsIndicatorByInstitutionLevelWrapper getInstitutionLevelIndicator(
-			final StudentsIndicatorByInstitutionLevelSpecification specification) {
+			final StudentsIndicatorByAllInstitutionLevelSpecification specification) {
 		final List<StudentsIndicatorByInstitutionLevel> indicatorResult = services.getStudentsIndicatorByInstitutionLevel(specification);
 		return new StudentsIndicatorByInstitutionLevelWrapper(indicatorResult);
 	}
@@ -106,7 +106,7 @@ public class ReportController {
 	 */
 	@GetMapping("/report/institution")
 	public StudentsIndicatorByInstitutionWrapper getInstitutionIndicator(
-			final StudentsIndicatorByInstitutionSpecification specification) {
+			final StudentsIndicatorByInstitutionLevelSpecification specification) {
 		final List<StudentsIndicatorByInstitution> indicatorResult = services.getStudentsIndicatorByInstitution(specification);
 		return new StudentsIndicatorByInstitutionWrapper(indicatorResult);		
 	}
@@ -118,7 +118,7 @@ public class ReportController {
 	 */
 	@GetMapping("/report/institution-courses")
 	public StudentsIndicatorByCourseWrapper getInstitutionCoursesIndicator(
-			final StudentsIndicatorByCourseSpecification specification) {
+			final StudentsIndicatorByInstitutionCodeSpecification specification) {
 		final List<StudentsIndicatorByCourse> courseIndicators = services.getStudentsIndicatorByCourse(specification);
 		return new StudentsIndicatorByCourseWrapper(courseIndicators);
 	}

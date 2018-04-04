@@ -11,12 +11,12 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.Repository;
 
 /**
- * A classe {@link StudentsIndicatorByInstitutionRepository}
+ * A classe {@link StudentsIndicatorByInstitutionLevelRepository}
  *
  * @author Marcelo
  * @version 1.0 04/11/2017
  */
-public interface StudentsIndicatorByInstitutionRepository
+public interface StudentsIndicatorByInstitutionLevelRepository
 		extends Repository<StudentsIndicatorByInstitution, Long>,
 		JpaSpecificationExecutor<StudentsIndicatorByInstitution>{
 }

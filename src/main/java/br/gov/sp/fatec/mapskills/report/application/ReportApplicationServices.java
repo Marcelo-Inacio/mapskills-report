@@ -17,11 +17,11 @@ import com.querydsl.core.types.Predicate;
 
 import br.gov.sp.fatec.mapskills.report.indicator.ReportFacade;
 import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourse;
-import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByCourseSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.course.StudentsIndicatorByInstitutionCodeSpecification;
 import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitution;
-import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institution.StudentsIndicatorByInstitutionLevelSpecification;
 import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevel;
-import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByInstitutionLevelSpecification;
+import br.gov.sp.fatec.mapskills.report.indicator.institutionlevel.StudentsIndicatorByAllInstitutionLevelSpecification;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
 import br.gov.sp.fatec.mapskills.report.studentresult.data.StudentResultDataRetriever;
@@ -43,19 +43,19 @@ public class ReportApplicationServices {
 	
 	//@PreAuthorize("isFullyAuthenticated()")
 	public List<StudentsIndicatorByInstitutionLevel> getStudentsIndicatorByInstitutionLevel(
-			final StudentsIndicatorByInstitutionLevelSpecification specification) {
+			final StudentsIndicatorByAllInstitutionLevelSpecification specification) {
 		return facade.getStudentsIndicatorByInstitutionLevel(specification);
 	}
 	
 	//@PreAuthorize("isFullyAuthenticated()")
 	public List<StudentsIndicatorByInstitution> getStudentsIndicatorByInstitution(
-			final StudentsIndicatorByInstitutionSpecification specification) {
+			final StudentsIndicatorByInstitutionLevelSpecification specification) {
 		return facade.getInstitutionStudentIndicators(specification);
 	}
 
 	//@PreAuthorize("isFullyAuthenticated()")
 	public List<StudentsIndicatorByCourse> getStudentsIndicatorByCourse(
-			final StudentsIndicatorByCourseSpecification specification) {
+			final StudentsIndicatorByInstitutionCodeSpecification specification) {
 		return facade.getCourseStudentsIndicators(specification);
 	}
 	

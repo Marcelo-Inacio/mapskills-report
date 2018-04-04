@@ -1,5 +1,5 @@
 /*
- * @(#)StudentResultIndicatorData.java 1.0 1 08/10/2017
+ * @(#)SkillResultIndicatorData.java 1.0 1 08/10/2017
  *
  * Copyright (c) 2017, Fatec-Jessen Vidal. All rights reserved.
  * Fatec-Jessen Vidal proprietary/confidential. Use is subject to license terms.
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 
 /**
- * A classe {@link StudentResultIndicatorData} representa
+ * A classe {@link SkillResultIndicatorData} representa
  * o resultado de uma competencia avaliada por um aluno.
  *
  * @author Marcelo
@@ -24,7 +24,7 @@ import lombok.Getter;
 @Getter
 @Entity
 @Table(name = "MAPSKILLS.STUDENT_RADAR_RESULT_VIEW")
-public class StudentResultIndicatorData {
+public class SkillResultIndicatorData {
 	
 	@Id
 	@Column(name = "ID")
@@ -42,7 +42,7 @@ public class StudentResultIndicatorData {
 	@Column(name = "TOTAL")
 	private final Integer total;
 	
-	private StudentResultIndicatorData() {
+	private SkillResultIndicatorData() {
 		this.id = null;
 		this.studentId = null;
 		this.skillName = null;
