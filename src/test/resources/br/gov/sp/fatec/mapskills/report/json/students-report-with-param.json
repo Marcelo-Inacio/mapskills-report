@@ -2,43 +2,85 @@
   "numberOfElements": 3,
   "totalPages": 1,
   "currentPage": 0,
-  "remaningPages": 0,
-  "head": [
-    "RA",
-    "NOME",
-    "Liderança",
-    "Gestão de Tempo",
-    "Visão de Futuro",
-    "Comunicação",
-    "Resiliência"
-  ],
-  "data": [
-    [
-      "146112172000",
-      "AlunoTest0",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146112172001",
-      "AlunoTest1",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146112172002",
-      "AlunoTest2",
-      7,
-      7,
-      7,
-      7,
-      7
-    ]
+  "remainingPages": 0,
+  "students": [
+    {
+      "ra": "146112172000",
+      "name": "AlunoTest0",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146112172001",
+      "name": "AlunoTest1",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146112172002",
+      "name": "AlunoTest2",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    }
   ]
 }

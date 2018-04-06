@@ -11,13 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
-import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.gov.sp.fatec.mapskills.report.restapi.serializer.StudentResultPageSerializer;
 import br.gov.sp.fatec.mapskills.report.studentresult.StudentResult;
-import br.gov.sp.fatec.mapskills.report.studentresult.SkillResultIndicator;
 import lombok.Getter;
 
 /**
@@ -56,10 +54,5 @@ public class StudentResultPageWrapper {
 	
 	public int getCurrentPageNumber() {
 		return studentsReport.getNumber();
-	}
-	
-	public List<SkillResultIndicator> getFirstStudentIndicators() {
-		final List<StudentResult> list = getContent();
-		return CollectionUtils.isEmpty(list) ? Collections.emptyList() : list.get(0).getStudentIndicators();
 	}
 }

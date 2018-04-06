@@ -2,106 +2,267 @@
   "numberOfElements": 10,
   "totalPages": 1,
   "currentPage": 0,
-  "remaningPages": 0,
-  "head": [
-    "RA",
-    "NOME",
-    "Liderança",
-    "Gestão de Tempo",
-    "Visão de Futuro",
-    "Comunicação",
-    "Resiliência"
-  ],
-  "data": [
-    [
-      "146028172000",
-      "AlunoTest0",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172001",
-      "AlunoTest1",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172002",
-      "AlunoTest2",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172003",
-      "AlunoTest3",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172004",
-      "AlunoTest4",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172005",
-      "AlunoTest5",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172006",
-      "AlunoTest6",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172007",
-      "AlunoTest7",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172008",
-      "AlunoTest8",
-      7,
-      7,
-      7,
-      7,
-      7
-    ],
-    [
-      "146028172009",
-      "AlunoTest9",
-      7,
-      7,
-      7,
-      7,
-      7
-    ]
+  "remainingPages": 0,
+  "students": [
+    {
+      "ra": "146028172000",
+      "name": "AlunoTest0",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172001",
+      "name": "AlunoTest1",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172002",
+      "name": "AlunoTest2",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172003",
+      "name": "AlunoTest3",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172004",
+      "name": "AlunoTest4",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172005",
+      "name": "AlunoTest5",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172006",
+      "name": "AlunoTest6",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172007",
+      "name": "AlunoTest7",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172008",
+      "name": "AlunoTest8",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "ra": "146028172009",
+      "name": "AlunoTest9",
+      "skillResult": [
+        {
+          "skill": "Liderança",
+          "value": 7
+        },
+        {
+          "skill": "Gestão de Tempo",
+          "value": 7
+        },
+        {
+          "skill": "Visão de Futuro",
+          "value": 7
+        },
+        {
+          "skill": "Comunicação",
+          "value": 7
+        },
+        {
+          "skill": "Resiliência",
+          "value": 7
+        }
+      ]
+    }
   ]
 }
