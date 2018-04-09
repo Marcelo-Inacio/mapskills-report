@@ -9,7 +9,7 @@ Perfis
 
 ----
 
-Banco de dados relacional : [MySql](https://www.mysql.com "MySql")
+Banco de dados relacional : [MySql](https://www.mysql.com "MySql")<br>
 Banco de dados nosql : [Mongo](https://www.mongodb.com/ "Mongo")
 
 ----
@@ -17,8 +17,6 @@ Banco de dados nosql : [Mongo](https://www.mongodb.com/ "Mongo")
 Spring-boot : [Spring Boot](https://projects.spring.io/spring-boot/ "Spring Boot")
 - Rodar localmente
 `mvn spring-boot:run -Plocal`
-
-----
 
 - Gerar pacote
 `mvn clean install -Plocal`
@@ -28,8 +26,6 @@ Spring-boot : [Spring Boot](https://projects.spring.io/spring-boot/ "Spring Boot
 Docker : [Docker](https://www.docker.com/ "Docker")
 - Construir imagem a partir do Dockerfile  
 `docker build -t mapskills/mapskills-report .`
-
-----
 
 - Criar instância do container
 `docker run -it -d --rm --network mapskills-network --name mapskills-report -p 8083:8083 mapskills/mapskills-report`
