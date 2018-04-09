@@ -28,7 +28,7 @@ import br.gov.sp.fatec.mapskills.report.studentresult.StudentResultRepository;
  * @version 1.0 19/09/2017
  */
 @Configuration
-@Profile({"local", "azure-qas", "azure-prd"})
+@Profile({"test", "local", "azure-qas", "azure-prd"})
 @EnableMongoRepositories(basePackageClasses = StudentResultRepository.class)
 public class MongoConfig extends AbstractMongoConfiguration{
 	
